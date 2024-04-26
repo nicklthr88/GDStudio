@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Prototype Wireframe de Jeu</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/4.5.0/fabric.min.js"></script>
+</head>
+
+<body>
+    <div class="sidebar">
+        <img src="assets/test.svg" alt="Asset 1" class="draggable" draggable="true">
+        <img src="assets/test.svg" alt="Asset 2" class="draggable" draggable="true">
+        <!-- Ajoute plus d'assets ici -->
+    </div>
+    <button id="toggleRatio">Basculer Ratio 16:9 / 9:16</button>
+    <div class="canvas-container">
+        <canvas id="c" width="800" height="600"></canvas>
+        <button onclick="exporterPNG()">Exporter en PNG</button>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
