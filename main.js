@@ -46,13 +46,54 @@ function exporterPNG() {
     link.click();
 }
 
-document.getElementById('toggleRatio').addEventListener('click', function () {
-    if (isSixteenNine) {
-        // Change à 9:16
-        canvas.setDimensions({ width: 450, height: 800 });
-    } else {
-        // Change à 16:9
-        canvas.setDimensions({ width: 800, height: 450 });
+document.addEventListener("DOMContentLoaded", function () {
+    loadBackgrounds();
+    let currentStep = 1;
+    const totalSteps = 3;
+    showStep(currentStep);
+
+    document.querySelectorAll('.nextButton').forEach(button => {
+        button.addEventListener('click', () => {
+            if (currentStep < totalSteps) {
+                showStep(++currentStep);
+            } else {
+                finishSetup();
+            }
+        });
+    });
+
+    function showStep(stepNumber) {
+        document.querySelectorAll('#steps > div').forEach(div => {
+            div.style.display = 'none';
+        });
+        document.getElementById(`step${stepNumber}`).style.display = 'block';
     }
-    isSixteenNine = !isSixteenNine; // Bascule l'état du ratio
+
+    function finishSetup() {
+        document.getElementById('steps').style.display = 'none';
+        document.querySelector('#gameContainer').style.display = 'flex';
+        initializeCanvas(); // Initialise le canvas ici
+    }
 });
+
+function loadBackgrounds() {
+    const bgContainer = document.getElementById('backgroundSelection');
+    bgContainer.innerHTML = ''; // Nettoie les anciens fonds si présents
+    // Ajoutez ici la logique de chargement de vos fonds
+    ['bg1.png', 'bg2.png', 'bg3.png'].forEach(bg => {
+        let img = document.createElement('img');
+        img.src = `assets/bg/${bg}`;
+        img.className = 'background';
+        img.onclick = function () {
+            document.getElementById('startButton').style.display = 'block';
+            canvas.setBackgroundImage(img.src, canvas.renderAll.bind(canvas), {
+                scaleX: canvas.width / img.width,
+                scaleY: canvas.height / img.height
+            });
+        };
+        bgContainer.appendChild(img);
+    });
+}
+
+function initializeCanvas() {
+}

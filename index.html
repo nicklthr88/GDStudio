@@ -9,17 +9,41 @@
 </head>
 
 <body>
-    <div class="sidebar">
-        <img src="assets/test.svg" alt="Asset 1" class="draggable" draggable="true">
-        <img src="assets/test.svg" alt="Asset 2" class="draggable" draggable="true">
-        <!-- Ajoute plus d'assets ici -->
-    </div>
-    <button id="toggleRatio">Basculer Ratio 16:9 / 9:16</button>
-    <div class="canvas-container">
-        <canvas id="c" width="800" height="600"></canvas>
-        <button onclick="exporterPNG()">Exporter en PNG</button>
+    <div id="steps">
+        <div id="step1">
+            <h2>Étape 1: Sélectionnez un Titre de projet</h2>
+            <input type="text" id="projectName" placeholder="Entrez le nom du projet">
+            <button class="nextButton">Suivant</button>
+        </div>
+        <div id="step2" style="display:none;">
+            <h2>Étape 2: Sélectionnez une plateforme</h2>
+            <div id="platformSelection">
+                <!-- Images et interaction pour sélectionner une plateforme -->
+            </div>
+            <button class="nextButton">Suivant</button>
+        </div>
+        <div id="step3" style="display:none;">
+            <h2>Étape 3: Sélectionnez un Fond</h2>
+            <div id="backgroundSelection">
+                <!-- Les miniatures des fonds seront chargées ici -->
+            </div>
+            <button class="nextButton">Suivant</button>
+        </div>
     </div>
 
+
+    <div id="gameContainer">
+        <div class="sidebar">
+            <img src="assets/test.svg" alt="Asset 1" class="draggable" draggable="true">
+            <img src="assets/test.svg" alt="Asset 2" class="draggable" draggable="true">
+            <!-- Ajoute plus d'assets ici -->
+        </div>
+        <div class="canvas-container">
+            <button id="toggleRatio">Basculer Ratio 16:9 / 9:16</button>
+            <canvas id="c" width="800" height="600"></canvas>
+            <button onclick="exporterPNG()">Exporter en PNG</button>
+        </div>
+    </div>
     <script src="main.js"></script>
 </body>
 
