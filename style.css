@@ -1,10 +1,19 @@
 body {
     display: flex;
-    font-family: Arial, sans-serif;
+    flex-direction: column;
+    margin: 0px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
 }
 
 .sidebar {
-    width: 200px;
+    width: 20%;
     border-right: 1px solid #ccc;
     padding: 10px;
 }
@@ -15,6 +24,25 @@ body {
     flex-direction: column;
     align-items: center;
     padding: 20px;
+}
+
+#toolbar {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.toolbar-button {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.toolbar-button:hover {
+    background-color: #f0f0f0;
 }
 
 #toggleRatio {
@@ -36,7 +64,7 @@ canvas {
 }
 
 #gameContainer {
-    display: none; /* Cache ces éléments au chargement initial de la page */
+    display: flex; /* Cache ces éléments au chargement initial de la page */
 }
 
 #steps {
@@ -77,6 +105,21 @@ input#projectName:focus{
     border: 1px solid #1b5eda;
 }
 
+button#addLayer{
+    margin: 10px;
+    padding: 10px;
+    width: 200px;
+    border-radius: 15px;
+    border: none;
+    background-color: #1b5eda;
+    color: white;
+    cursor: pointer;
+}
+
+button#addLayer:hover{
+    background-color: #0e3a7d;
+}
+
 button.nextButton{
     margin: 10px;
     padding: 20px;
@@ -90,4 +133,68 @@ button.nextButton{
 
 button.nextButton:hover{
     background-color: #0e3a7d;
+}
+
+.sidebar-layers {
+    border-left: 1px solid #ccc;
+    padding: 10px;
+    width: 20%
+}
+
+ul#layerList {
+    padding: 0;
+    margin: 15px 0px;
+    list-style: none;
+}
+
+#layerList li {
+    margin-top: 0px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 10px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#layerList li:nth-child(odd) {
+    background-color: #f0f0f0;
+}
+
+#layerList li ul {
+    margin-top: 2px;
+    margin-left: 20px;
+    font-weight: normal;
+}
+.material-icons {
+    font-size: 18px;
+    vertical-align: middle;
+}
+button {
+    margin-left: 10px;
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+.active {
+    background-color: #4695a3!important;
+}
+
+.sidebar ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start; 
+    align-items: center;
+}
+
+.sidebar ul li {
+    padding: 10px;
+    cursor: grab;
+    flex: 0 0 33%;
+    box-sizing: border-box;
 }

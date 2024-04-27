@@ -5,11 +5,12 @@
     <meta charset="UTF-8">
     <title>Prototype Wireframe de Jeu</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/4.5.0/fabric.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.0/fabric.min.js"></script>
 </head>
 
 <body>
-    <div id="steps">
+    <div id="steps" style="display:none">
         <div id="step1">
             <h2>Étape 1: Sélectionnez un Titre de projet</h2>
             <input type="text" id="projectName" placeholder="Entrez le nom du projet">
@@ -31,17 +32,66 @@
         </div>
     </div>
 
-
+    <header>
+        <div id="toolbar">
+            <button class="toolbar-button" id="clearCanvas">
+                <i class="material-icons">delete</i>
+                Effacer Canvas</button>
+            <button class="toolbar-button form-btn" data-form="rect">
+                <i class="material-icons">crop_square</i>
+                Ajouter Rectangle</button>
+            <button class="toolbar-button form-btn" data-form="circle">
+                <i class="material-icons">panorama_fish_eye</i>
+                Ajouter Cercle</button>
+            <button class="toolbar-button form-btn" data-form="triangle">
+                <i class="material-icons">change_history</i>
+                Ajouter Triangle</button>
+            <button class="toolbar-button form-btn" data-form="octogne">
+                <i class="material-icons">change_history</i>
+                Ajouter Octogone</button>
+            <button class="toolbar-button form-btn" data-form="drawFree">
+                <i class="material-icons">gesture</i>
+                Stylo</button>
+            <div class="toolbar-button" id="colorPickerContainer">
+                <i class="material-icons">color_lens</i>
+                <input type="color" id="colorPicker" name="colorPicker" value="#ff0000">
+                <span id="selectedColor">#ff0000</span>
+            </div>
+            <button class="toolbar-button" id="saveCanvas">
+                <i class="material-icons">save</i>
+                Exporter Image</button>
+        </div>
+    </header>
     <div id="gameContainer">
         <div class="sidebar">
-            <img src="assets/test.svg" alt="Asset 1" class="draggable" draggable="true">
-            <img src="assets/test.svg" alt="Asset 2" class="draggable" draggable="true">
+            <ul>
+                <li class="sidebar-item" class="draggable" draggable="true"><img src="assets/test.svg" alt="Asset 1"
+                        class="draggable" draggable="true">
+                </li>
+                <li class="sidebar-item" class="draggable" draggable="true"><img src="assets/asset1.svg" alt="Asset 1">
+                </li>
+                <li class="sidebar-item" class="draggable" draggable="true"><img src="assets/test.svg" alt="Asset 1"
+                        class="draggable" draggable="true">
+                </li>
+                <li class="sidebar-item" class="draggable" draggable="true"><img src="assets/test.svg" alt="Asset 1"
+                        class="draggable" draggable="true">
+                </li>
+                <li class="sidebar-item" class="draggable" draggable="true"><img src="assets/test.svg" alt="Asset 1"
+                        class="draggable" draggable="true">
+                </li>
+                <!-- Ajoute plus d'assets ici -->
+            </ul>
             <!-- Ajoute plus d'assets ici -->
         </div>
         <div class="canvas-container">
-            <button id="toggleRatio">Basculer Ratio 16:9 / 9:16</button>
+            <h1>Gestion de Calques avec Fabric.js</h1>
             <canvas id="c" width="800" height="600"></canvas>
-            <button onclick="exporterPNG()">Exporter en PNG</button>
+
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/4.5.0/fabric.min.js"></script>
+        </div>
+        <div class="sidebar-layers">
+            <button id="addLayer">Ajouter Calque</button>
+            <ul id="layerList"></ul>
         </div>
     </div>
     <script src="main.js"></script>
